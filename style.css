@@ -11,6 +11,7 @@ body {
   font-family: "Roboto", Arial, Verdana, sans-serif;
   text-transform: uppercase;
   color: #fff;
+  background: #000;
 }
 
 img {
@@ -120,7 +121,7 @@ nav a,.nav-icons a {
   color: #fff;
   top: 0;
   right: 0;
-  width: 20%;
+  width: 22%;
   background-color: #000;
   transform: translateX(100%);
   transition: transform 300ms ease-in-out;
@@ -167,6 +168,8 @@ nav a,.nav-icons a {
   color: #aaa;
 }
 /* section-1 */
+
+
 section {
   display: flex;
   justify-content: flex-end;
@@ -175,16 +178,19 @@ section {
   background-position: center;
   background-size: cover;
   padding: 0 2rem;
+  position: relative;
 }
 
 h2 {
   font-weight: normal;
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
+  opacity: 0;
 }
 h1 {
   font-size: 2.7rem;
   margin-bottom: 1.5rem;
+  opacity: 0;
 }
 
 .content {
@@ -202,8 +208,24 @@ h1 {
   font-weight: bold;
   position: relative;
   cursor: pointer;
+  opacity: 0;
 }
 
+.active h1,.active h2, .active .content button {
+
+  animation: fadeInAndUp 0.8s forwards;
+}
+
+@keyframes fadeInAndUp {
+  0% {
+    opacity:0;
+    transform: translateY(150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .content button::after {
   content: "";
   position: absolute;
@@ -229,10 +251,39 @@ h1 {
   left: 0;
 }
 
+.icon {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 49%;
+  transform: translateX(-50%);
+  bottom: 5%;
+  animation: fadeForever 3s infinite;
+}
+
+@keyframes fadeForever {
+  0% {opacity: 0; transform: translateY(0)}
+
+  50% {
+    opacity: 1;transform: translateY(0);
+  }
+
+
+  90% {
+    transform: translateY(15px)
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .section-1 {
   background-image: url("https://sxcontent9668.azureedge.us/cms-assets/assets/Launch_Page_Starlink1_vertical_18_DESKTOP_c851b30656.jpg");
 
   justify-content: space-between;
+}
+
+.stop-scroll {
+  overflow: hidden;
 }
 
 .section-2 {
@@ -274,4 +325,24 @@ footer a {
 
 footer a:hover {
   color: #999;
+}
+
+@media (max-width: 1320px) {
+  .navbar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  nav {
+    display: none;
+  }
+
+  .menu {
+    width:25%;
+  }
+  .logo-div {
+    position: absolute;
+    display: flex;
+  }
 }
